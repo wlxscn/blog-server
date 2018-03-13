@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- 9.5.0
+after_success:
+- ssh root@69.171.71.139 -p 28716 'cd /usr/share/node && git pull && pm2 restart index'
+before_install:
+- openssl aes-256-cbc -K $encrypted_ac8ab9113080_key -iv $encrypted_ac8ab9113080_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 69.171.71.139\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
