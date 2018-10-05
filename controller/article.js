@@ -1,4 +1,5 @@
 const ArticleModel = require('../model/article')
+
 const article = async (router) => {
   router.post('/article/create', async(ctx) => {
     const {content, title, summary} = ctx.request.body
@@ -6,7 +7,6 @@ const article = async (router) => {
     ctx.body = 'success'
   })
   .get('/article', async (ctx) => {
-    console.log('article122')
     let articleArr = await ArticleModel.get()
     ctx.body = {
       status: 'success',
@@ -29,7 +29,6 @@ const article = async (router) => {
     await ArticleModel.deleteArticle(ctx.params.id)
     ctx.body = 'success'
   })
-  
 }
 
 module.exports = article
